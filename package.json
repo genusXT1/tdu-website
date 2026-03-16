@@ -1,0 +1,51 @@
+{
+  "name": "ruse-university---taraclia-branch-alternative-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "start": "node server.ts",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@firebase/app": "^0.14.7",
+    "@firebase/auth": "^1.12.0",
+    "@firebase/firestore": "^4.10.0",
+    "@google/genai": "^1.36.0",
+    "@tailwindcss/postcss": "^4.2.0",
+    "@tailwindcss/vite": "^4.2.0",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.0.0",
+    "autoprefixer": "^10.4.24",
+    "browser-image-compression": "^2.0.2",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "firebase": "^12.8.0",
+    "firebase-admin": "^13.7.0",
+    "lucide-react": "^0.574.0",
+    "motion": "^12.34.2",
+    "multer": "^2.1.0",
+    "node-telegram-bot-api": "^0.67.0",
+    "postcss": "^8.5.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-markdown": "^10.1.0",
+    "react-quill-new": "^3.8.3",
+    "react-router-dom": "^7.12.0",
+    "sharp": "^0.34.5",
+    "tailwind-merge": "^3.4.1",
+    "tailwindcss": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/node-telegram-bot-api": "^0.64.13",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}

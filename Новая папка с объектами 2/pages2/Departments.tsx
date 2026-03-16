@@ -1,0 +1,178 @@
+
+import React from 'react';
+import { Language } from '../types';
+import { motion } from 'motion/react';
+import { GraduationCap, Users, BookOpen, Microscope, ArrowRight } from 'lucide-react';
+
+interface DepartmentsProps {
+  lang: Language;
+}
+
+const Departments: React.FC<DepartmentsProps> = ({ lang }) => {
+  const t = {
+    BG: {
+      title: 'Катедри',
+      subtitle: 'Академичното ядро на нашия университет',
+      tag: 'Образование и наука',
+      departments: [
+        {
+          title: 'Катедра по филологически и хуманитарни науки',
+          head: 'доц. д-р Василий Кондов',
+          desc: 'Осигурява обучение по български език, литература, история и култура. Подготвя специалисти с висока езикова и историческа култура.',
+          icon: BookOpen,
+          color: 'bg-blue-600'
+        },
+        {
+          title: 'Катедра по педагогика и социални науки',
+          head: 'доц. д-р Мария Паслар',
+          desc: 'Фокусирана върху подготовката на бъдещи учители и социални работници. Развива иновативни методи на обучение и социална подкрепа.',
+          icon: Users,
+          color: 'bg-emerald-600'
+        },
+        {
+          title: 'Катедра по икономика и управление',
+          head: 'гл. ас. д-р Иван Иванов',
+          desc: 'Подготвя кадри в областта на бизнес администрацията и управлението, адаптирани към съвременните икономически условия.',
+          icon: GraduationCap,
+          color: 'bg-amber-600'
+        }
+      ]
+    },
+    RU: {
+      title: 'Кафедры',
+      subtitle: 'Академическое ядро нашего университета',
+      tag: 'Образование и наука',
+      departments: [
+        {
+          title: 'Кафедра филологических и гуманитарных наук',
+          head: 'доц. д-р Василий Кондов',
+          desc: 'Обеспечивает обучение болгарскому языку, литературе, истории и культуре. Готовит специалистов с высокой языковой и исторической культурой.',
+          icon: BookOpen,
+          color: 'bg-blue-600'
+        },
+        {
+          title: 'Кафедра педагогики и социальных наук',
+          head: 'доц. д-р Мария Паслар',
+          desc: 'Ориентирована на подготовку будущих учителей и социальных работников. Развивает инновационные методы обучения и социальной поддержки.',
+          icon: Users,
+          color: 'bg-emerald-600'
+        },
+        {
+          title: 'Кафедра экономики и управления',
+          head: 'гл. ас. д-р Иван Иванов',
+          desc: 'Готовит кадры в области бизнес-администрирования и управления, адаптированные к современным экономическим условиям.',
+          icon: GraduationCap,
+          color: 'bg-amber-600'
+        }
+      ]
+    },
+    RO: {
+      title: 'Catedre',
+      subtitle: 'Nucleul academic al universității noastre',
+      tag: 'Educație și știință',
+      departments: [
+        {
+          title: 'Catedra de Științe Filologice și Umaniste',
+          head: 'conf. univ. dr. Vasili Kondov',
+          desc: 'Asigură formarea în limba, literatura, istoria și cultura bulgară. Pregătește specialiști cu o înaltă cultură lingvistică și istorică.',
+          icon: BookOpen,
+          color: 'bg-blue-600'
+        },
+        {
+          title: 'Catedra de Pedagogie și Științe Sociale',
+          head: 'conf. univ. dr. Maria Paslari',
+          desc: 'Axată pe pregătirea viitorilor profesori și asistenți sociali. Dezvoltă metode inovatoare de predare și sprijin social.',
+          icon: Users,
+          color: 'bg-emerald-600'
+        },
+        {
+          title: 'Catedra de Economie și Management',
+          head: 'lect. univ. dr. Ivan Ivanov',
+          desc: 'Pregătește cadre în domeniul administrării afacerilor și managementului, adaptate condițiilor economice moderne.',
+          icon: GraduationCap,
+          color: 'bg-amber-600'
+        }
+      ]
+    },
+    EN: {
+      title: 'Departments',
+      subtitle: 'The academic core of our university',
+      tag: 'Education & Science',
+      departments: [
+        {
+          title: 'Department of Philological and Humanitarian Sciences',
+          head: 'Assoc. Prof. Dr. Vasili Kondov',
+          desc: 'Provides training in Bulgarian language, literature, history, and culture. Prepares specialists with high linguistic and historical culture.',
+          icon: BookOpen,
+          color: 'bg-blue-600'
+        },
+        {
+          title: 'Department of Pedagogy and Social Sciences',
+          head: 'Assoc. Prof. Dr. Maria Paslari',
+          desc: 'Focused on training future teachers and social workers. Develops innovative teaching methods and social support.',
+          icon: Users,
+          color: 'bg-emerald-600'
+        },
+        {
+          title: 'Department of Economics and Management',
+          head: 'Chief Asst. Prof. Dr. Ivan Ivanov',
+          desc: 'Trains personnel in the field of business administration and management, adapted to modern economic conditions.',
+          icon: GraduationCap,
+          color: 'bg-amber-600'
+        }
+      ]
+    }
+  }[lang];
+
+  return (
+    <div className="min-h-screen bg-white">
+      <section className="bg-[#003366] text-white pt-40 pb-24 px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#FFCC00]/5 to-transparent"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <span className="text-[#FFCC00] text-[10px] font-black uppercase tracking-[0.5em] block mb-6">{t.tag}</span>
+          <h1 className="text-5xl md:text-8xl font-serif italic mb-8 leading-tight">{t.title}</h1>
+          <p className="text-xl text-white/60 font-light max-w-2xl">{t.subtitle}</p>
+        </div>
+      </section>
+
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 gap-12">
+          {t.departments.map((dept, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-[4rem] border border-slate-100 shadow-sm overflow-hidden flex flex-col md:flex-row group hover:shadow-2xl transition-all duration-700"
+            >
+              <div className={`md:w-1/3 ${dept.color} p-16 flex items-center justify-center relative overflow-hidden`}>
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <dept.icon size={80} className="text-white relative z-10 group-hover:scale-110 transition-transform duration-500" />
+              </div>
+              <div className="md:w-2/3 p-12 md:p-20 flex flex-col justify-center">
+                <h3 className="text-3xl md:text-4xl font-serif italic text-[#003366] mb-6">{dept.title}</h3>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-[#003366]">
+                    <Users size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Head of Department</p>
+                    <p className="text-lg font-bold text-[#003366]">{dept.head}</p>
+                  </div>
+                </div>
+                <p className="text-slate-500 text-lg font-light leading-relaxed mb-10">
+                  {dept.desc}
+                </p>
+                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#003366] group-hover:text-[#FFCC00] transition-colors">
+                  Learn more <ArrowRight size={14} />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Departments;

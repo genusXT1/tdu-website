@@ -1,0 +1,7 @@
+{
+  "name": "ТДУ-РУССЕ ТР",
+  "description": "A minimalist, academic, European-style mobile-first web application for the Angel Kanchev University of Ruse, Taraclia Branch, focusing on accessibility, longevity, and EU integration.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

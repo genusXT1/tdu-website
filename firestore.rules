@@ -1,0 +1,69 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Function to check if user is a sysadmin
+    function isSysadmin() {
+      return isAuthenticated() && request.auth.token.email_verified == true && (
+        request.auth.token.email.matches('.*sysadmin.*') ||
+        request.auth.token.email == 'admin@tdu-tr.md' ||
+        request.auth.token.email == 'ketyschool@gmail.com' ||
+        request.auth.token.email == 'kara_andrei@bk.ru'
+      );
+    }
+    
+    // Function to check if user is an admin
+    function isAdmin() {
+      return isSysadmin() || (isAuthenticated() && exists(/databases/$(database)/documents/admin_users/$(request.auth.token.email)));
+    }
+
+    // Public Collections (Read: Anyone, Write: Admin)
+    match /{collection}/{docId} {
+      allow read: if collection in [
+        'news', 'gallery', 'programs', 'pages', 'partners', 
+        'academic_calendar', 'exam_schedule', 'scholarships', 
+        'afk_activities', 'documents', 'schedules', 'site_content', 'system'
+      ];
+      allow write: if isAdmin() && collection in [
+        'news', 'gallery', 'programs', 'pages', 'partners', 
+        'academic_calendar', 'exam_schedule', 'scholarships', 
+        'afk_activities', 'documents', 'schedules', 'site_content', 'system'
+      ];
+    }
+    
+    // Applications (Write: Anyone, Read/Update/Delete: Admin)
+    match /applications/{docId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+    
+    // Logs (Read: Admin, Create: Anyone [via API], Update/Delete: Sysadmin)
+    match /logs/{docId} {
+      allow read: if isAdmin();
+      allow create: if true;
+      allow update, delete: if isSysadmin();
+    }
+    
+    // Admin Users Registry (Read: Admin, Write: Sysadmin)
+    match /admin_users/{docId} {
+      allow read: if isAdmin();
+      allow write: if isSysadmin();
+    }
+
+    // Bot Admins (Strict)
+    match /bot_admins/{docId} {
+      allow read, write: if isSysadmin();
+    }
+
+    // Deny everything else by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
